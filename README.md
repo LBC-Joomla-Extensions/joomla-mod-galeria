@@ -10,7 +10,7 @@ Un módulo Joomla para mostrar una galeria de imagenes
 ~~~
 git init foo
 cd foo
-git pull git remote add origin https://github.com/LBC-Joomla-Extensions/joomla-mod-galeria.git
+git pull https://github.com/LBC-Joomla-Extensions/joomla-mod-galeria.git
 ~~~
 
 * Instalamos las dependencias del archivo package.json
