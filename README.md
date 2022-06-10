@@ -1,6 +1,6 @@
-# Estructura base de una módulo para Joomla 3.x
+# Joomla Mod Galeria
 
-Una plantilla de base con la estructura de un módulo Joomla.
+Un módulo Joomla para mostrar una galeria de imagenes
 
 ## Prerrequisitos
 * NodeJs
@@ -10,7 +10,7 @@ Una plantilla de base con la estructura de un módulo Joomla.
 ~~~
 git init foo
 cd foo
-git pull https://github.com/LBC-Starter-Kits/Joomla-Module-Starter-Kit.git
+git pull git remote add origin https://github.com/LBC-Joomla-Extensions/joomla-mod-galeria.git
 ~~~
 
 * Instalamos las dependencias del archivo package.json
