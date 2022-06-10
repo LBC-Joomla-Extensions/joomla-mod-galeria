@@ -30,7 +30,10 @@ module.exports = {
                 use: [
                     /*"style-loader",*/
                     MiniCssExtractPlugin.loader,  /* Cambiar style-loader por este para tener archivos css */
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: { url: false }
+                    },
                     "sass-loader"
                 ]
             }
@@ -45,15 +48,16 @@ module.exports = {
             patterns: [                
                 { from: path.resolve(__dirname,"src","tmpl"), to: "tmpl" },
                 { from: path.resolve(__dirname,"vendor"), to: "vendor" },
+                { from: path.resolve(__dirname,"src","images"), to: "css/images" },
                 { from: "./src/index.html", to: "index.html" },
-                { from: "./src/helper.php", to: "helper.php" },
-                { from: "./src/mod_modBase.php", to: "mod_modBase.php" },
-                { from: "./src/mod_modBase.xml", to: "mod_modBase.xml" },                
+                { from: "./src/helper.php", to: "helper.php" }, 
+                { from: "./src/mod_galeria.php", to: "mod_galeria.php" },
+                { from: "./src/mod_galeria.xml", to: "mod_galeria.xml" },                
             ],
         }),
         new ZipPlugin({
             path : '../dist_zip',
-            filename : 'j3mod_base.zip'
+            filename : 'joomla-mod-galeria.zip'
         }),
     ],
 };

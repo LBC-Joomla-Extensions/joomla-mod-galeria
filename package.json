@@ -1,7 +1,7 @@
 {
-  "name": "joomla-base-module",
+  "name": "joomla-mod-galeria",
   "version": "1.0.0",
-  "description": "Una módulo base para Joomla.",
+  "description": "Un módulo Joomla para mostrar una galeria de imagenes.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",

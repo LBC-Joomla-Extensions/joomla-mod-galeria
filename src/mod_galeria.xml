@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.0" client="site" method="upgrade">
+    <name>Galeria</name>
+    <author>Luis BC</author>
+    <version>1.0.0</version>
+    <description>Un módulo Joomla para mostrar una galeria de imagenes</description>
+    <files>
+        <filename>mod_galeria.xml</filename>
+        <filename module="mod_galeria">mod_galeria.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>vendor</folder>
+        <folder>tmpl</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field 
+                    name="columnas" 
+                    type="number"        
+                    default="1"
+                    min="1"          
+                    label="Columnas" 
+                    description="Número de columnas a máxima resolución de pantalla">
+				</field>
+                <field 
+                    name="imagenesPorPagina" 
+                    type="number"              
+                    default="1"
+                    min="1"    
+                    label="Imagenes por página" 
+                    description="Imagenes por página">
+				</field>
+                <field
+                    name="dir"
+                    type="folderlist"
+                    directory="images"
+                    recursive="true"
+                    label="Directorio"
+                    description="Directorio para mostrar imágenes">
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
