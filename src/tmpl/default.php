@@ -16,6 +16,7 @@ $lista = Galeria::getURLImagenes($params);
 $modoVisualizacion = isset($params['modoVisualizacion']) ? $params['modoVisualizacion'] : 'paginado';
 $imagenesPorCarga = isset($params['imagenesPorPagina']) && $params['imagenesPorPagina'] > 0 ? $params['imagenesPorPagina'] : 12;
 $imagenesTotales = count($lista);
+$columnas = isset($params['columnas']) && $params['columnas'] > 0 ? $params['columnas'] : 2;
 
 // Si no num positivo entonces no hay paginación
 $paginacion = $modoVisualizacion === 'paginado' && $imagenesPorCarga > 0;
@@ -24,6 +25,13 @@ $i = 1;
 
 // Atributos data para JavaScript
 $dataMode = $modoVisualizacion === 'infinito' ? 'data-mode="infinito"' : 'data-mode="paginado"';
+
+// Inyectar CSS dinámico para el número de columnas
+$doc->addStyleDeclaration("
+    .galeria-inner-wrapper {
+        --galeria-columnas: $columnas;
+    }
+");
 
 echo "<div class='galeria-outer-wrapper' $dataMode data-imagenes-totales='$imagenesTotales' data-imagenes-por-carga='$imagenesPorCarga'>
         <h3 class='galeria-header'></h3>

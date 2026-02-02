@@ -6,69 +6,79 @@
 // 2. Importar componentes
 @import 'components';
 
-:root{
+:root {
     --mod-galeria-altura-item: 13rem;
 }
 
-.galeria-outer-wrapper{
+.galeria-outer-wrapper {
     width: 100%;
-    position:relative;
+    position: relative;
 }
 
 
-.galeria-inner-wrapper{
-    width:100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.galeria-inner-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr; // Mobile first: 1 columna
+    gap: 1rem;
+    justify-items: center;
+
+    // Tablet: 2 columnas o menos si el parámetro es menor
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(min(2, var(--galeria-columnas, 2)), 1fr);
+    }
+
+    // Desktop: usar el número de columnas configurado
+    @media (min-width: 1100px) {
+        grid-template-columns: repeat(var(--galeria-columnas, 2), 1fr);
+    }
 }
 
-.galeria-item{
+.galeria-item {
     width: 100%;
-    max-width: 25rem;
+    max-width: none; // Eliminar max-width fijo para que Grid controle el ancho
     max-height: 15rem;
     padding: .5rem;
-    overflow: hidden;    
-    transition: padding .5s,border .6s;
-    -webkit-transition: padding .5s,border .6s;    
-    margin-bottom: 2rem;
-    
-    &:hover{
+    overflow: hidden;
+    transition: padding .5s, border .6s;
+    -webkit-transition: padding .5s, border .6s;
+
+    &:hover {
         // padding: 0;
     }
 
-    &-imagen{
+    &-imagen {
         width: 100%;
         // height: 100%;
         height: var(--mod-galeria-altura-item);
-        object-fit: cover;    
+        object-fit: cover;
 
         transition: border-radius .5s, transform .5s;
         -webkit-transition: border-radius .5s, transform .5s;
 
-        &:hover{
+        &:hover {
             // border-radius:15% 15%; 
             transform: scale(1.05);
         }
     }
 
-    &-preload{
-        position:relative;
+    &-preload {
+        position: relative;
         width: 100%;
         height: var(--mod-galeria-altura-item);
         max-height: var(--mod-galeria-altura-item);
         display: table;
         cursor: pointer;
 
-        border:1px solid rgba(255, 255, 255, 0.3);
-        border-radius:5% 5%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5% 5%;
         overflow: hidden;
 
-        &:hover{
-            border:1px solid rgba(255, 123, 0, 0.658);
+        &:hover {
+            border: 1px solid rgba(255, 123, 0, 0.658);
         }
 
-        &-imagen{
+        &-imagen {
             position: absolute;
             width: 100%;
             // height: 100%;
@@ -79,41 +89,41 @@
     }
 }
 
-.galeria-paginacion-wrapper{
+.galeria-paginacion-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;    
-    margin-top:2rem;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
-.galeria-paginacion-boton{
+.galeria-paginacion-boton {
     padding: 1rem;
     margin: .1rem .1rem .1rem .1rem;
     border-radius: 50%;
     width: 3rem;
-    font-family: "Ubuntu","sans-serif";
+    font-family: "Ubuntu", "sans-serif";
     font-weight: bold;
-    font-size:1rem;
+    font-size: 1rem;
     display: flex;
-    justify-content: center;    
+    justify-content: center;
 }
 
-.galeria-paginacion-boton:hover{
+.galeria-paginacion-boton:hover {
     cursor: pointer;
 }
 
-.galeria-paginacion-wrapper button.activo{
+.galeria-paginacion-wrapper button.activo {
     background-color: #fd8800;
 }
 
-.galeria-overlay{
+.galeria-overlay {
     display: none;
 }
 
-.galeria-overlay-abierto{
-    position:fixed;
+.galeria-overlay-abierto {
+    position: fixed;
     top: 0;
-    left:0;
+    left: 0;
     width: 100%;
     height: 100vh;
     background-color: rgba(156, 156, 156, 0.8);
@@ -122,56 +132,57 @@
     align-items: center;
 
     box-sizing: border-box;
-    z-index:11;
-    overflow:hidden;
+    z-index: 11;
+    overflow: hidden;
 }
 
-.galeria-overlay-inner{
-    display:flex;
+.galeria-overlay-inner {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.galeria-overlay-imagen{
+.galeria-overlay-imagen {
     width: 100%;
-    height:100%;
+    height: 100%;
     object-fit: contain;
 }
-.galeria-overlay-boton-cerrar{
+
+.galeria-overlay-boton-cerrar {
     display: none;
     position: absolute;
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
     width: 50px;
-    height:50px;
+    height: 50px;
     background-image: url("./images/close.png");
     background-size: contain;
-    margin:1rem;
+    margin: 1rem;
     cursor: pointer;
 }
 
-.ajuste-alto{
+.ajuste-alto {
     width: auto;
     height: 90%;
 }
 
-.ajuste-ancho{
+.ajuste-ancho {
     height: auto;
-    width:90%;
+    width: 90%;
 }
 
-.ajuste-padding{
-    padding:1rem;
+.ajuste-padding {
+    padding: 1rem;
 }
 
-@media (min-width:599px){
-    .ajuste-ancho{        
-        width:80%;
+@media (min-width:599px) {
+    .ajuste-ancho {
+        width: 80%;
     }
 }
 
-@media (min-width:1099px){
-    .ajuste-ancho{
+@media (min-width:1099px) {
+    .ajuste-ancho {
         width: 60%;
     }
 }
