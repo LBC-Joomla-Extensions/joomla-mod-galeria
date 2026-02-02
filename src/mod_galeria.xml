@@ -25,13 +25,22 @@
                     label="Columnas" 
                     description="Número de columnas a máxima resolución de pantalla">
 				</field>
-                <field 
-                    name="imagenesPorPagina" 
-                    type="number"              
-                    default="1"
-                    min="1"    
-                    label="Imagenes por página" 
-                    description="Imagenes por página. 0 para desactivar paginación">
+                <field
+                    name="modoVisualizacion"
+                    type="list"
+                    default="paginado"
+                    label="Modo de visualización"
+                    description="Selecciona el modo de visualización de la galería">
+                    <option value="paginado">Paginado</option>
+                    <option value="infinito">Scroll Infinito</option>
+				</field>
+                <field
+                    name="imagenesPorPagina"
+                    type="number"
+                    default="12"
+                    min="1"
+                    label="Imágenes por carga"
+                    description="En modo paginado: imágenes por página. En modo scroll infinito: imágenes a cargar cada vez">
 				</field>
                 <field
                     name="dir"
